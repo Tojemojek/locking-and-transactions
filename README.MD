@@ -25,14 +25,17 @@ Postgres bahaves a bit different than most of SQL DB systems. From Postgress spe
 > guarantees are acceptable. The behavior of the available isolation levels is detailed in the following subsections.
 
 ### BEFORE START
-Prepare db - use provided 
+
+Prepare db - use provided
+
 - docker/custom-logging/docker-compose.yaml (it logs a lot) <br>
-or
+  or
 - docker/standard/docker-compose.yaml <br>
-or 
+  or
 - any Postgress DB with provided there password and user
 
 Use files to create schema and fill it with data
+
 - data/01_create.sql
 - data/02_data.sql
 
@@ -100,17 +103,87 @@ BUT WHY?
 ```
 
 so version must match on DB what we have in java = in this update statement we are also changing version. As single line
-is always locked on update in DB, there is no risk of lost updates. 
+is always locked on update in DB, there is no risk of lost updates.
 
 ### Lost updates TEST 3:
+
 Try to run jMetter from file ./jmetter/addToAccountWithRetry.jmx
 As Test 2 but method with "retry=true"
 
 - 100% Success rate on requests (100 200 OK)
 - amount = 100.00 (so valid result)
-a lot of retries done = but that's how optimistic locking should work 
+  a lot of retries done = but that's how optimistic locking should work
 
+## Pessimistic Locking
 
+- https://www.postgresql.org/docs/current/explicit-locking.html
+
+### Types
+
+There are 3 types of locks
+
+- PESSIMISTIC_READ
+  we lock entity - everybody can read entity, NOBODY can change entity.
+  in postgress realized with `FOR SHARE` lock
+
+```sql
+    select address0_.id            as id1_1_,
+           address0_.bid           as bid2_1_,
+           address0_.city          as city3_1_,
+           address0_.created_date  as created_4_1_,
+           address0_.last_modified as last_mod5_1_,
+           address0_.street        as street6_1_,
+           address0_.street_no     as street_n7_1_,
+           address0_.version       as version8_1_
+    from address address0_
+    where address0_.bid = ? for share of address0_
+```
+
+- PESSIMISTIC_WRITE
+  we lock entity - everybody can read entity, only we can change entity.
+  in postgress realized with `FOR UPDATE` lock
+
+```sql
+select address0_.id            as id1_1_0_,
+       address0_.bid           as bid2_1_0_,
+       address0_.city          as city3_1_0_,
+       address0_.created_date  as created_4_1_0_,
+       address0_.last_modified as last_mod5_1_0_,
+       address0_.street        as street6_1_0_,
+       address0_.street_no     as street_n7_1_0_,
+       address0_.version       as version8_1_0_
+from address address0_
+where address0_.id = ? for update of address0_
+```
+
+- PESSIMISTIC_FORCE_INCREMENT
+```sql
+select address0_.id            as id1_1_,
+       address0_.bid           as bid2_1_,
+       address0_.city          as city3_1_,
+       address0_.created_date  as created_4_1_,
+       address0_.last_modified as last_mod5_1_,
+       address0_.street        as street6_1_,
+       address0_.street_no     as street_n7_1_,
+       address0_.version       as version8_1_
+from address address0_
+where address0_.bid = ? for update
+    of address0_ nowait;
+update
+    address
+set version=?
+where id = ?
+  and version = ?;
+```
+
+as above but works with @Version on entity.
+
+### Scopes
+
+- PessimisticLockScope.NORMAL
+  locks only our entity
+- PessimisticLockScope.EXTENDED
+  locks entity and all it's internal collections
 
 
 

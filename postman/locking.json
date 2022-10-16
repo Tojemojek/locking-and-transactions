@@ -180,6 +180,141 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "READ Pesimistic Lock Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/address/get/read/ADD_0001?locktime=10000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address",
+								"get",
+								"read",
+								"ADD_0001"
+							],
+							"query": [
+								{
+									"key": "locktime",
+									"value": "10000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WRITE Pesimistic Lock Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/address/get/write/ADD_0001?locktime=10000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address",
+								"get",
+								"write",
+								"ADD_0001"
+							],
+							"query": [
+								{
+									"key": "locktime",
+									"value": "10000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FORCE INCREMENT Pesimistic Lock Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/address/get/force/ADD_0001?locktime=1500",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address",
+								"get",
+								"force",
+								"ADD_0001"
+							],
+							"query": [
+								{
+									"key": "locktime",
+									"value": "1500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/address/save/no/ADD_0001/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address",
+								"save",
+								"no",
+								"ADD_0001",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NO LOCKS Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/address/get/no/ADD_0001?locktime=100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address",
+								"get",
+								"no",
+								"ADD_0001"
+							],
+							"query": [
+								{
+									"key": "locktime",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
