@@ -1,0 +1,6 @@
+FROM postgres:14.5
+COPY postgresql.conf /etc/conf/
+RUN chown postgres:postgres /etc/conf/postgresql.conf
+
+EXPOSE 5432
+CMD ["postgres", "-c", "config-file=/etc/conf/postgresql.conf"]
