@@ -41,6 +41,12 @@ public class PersonService {
     }
 
     @Transactional
+    public List<PersonDto> getAllInSet() {
+        List<Person> all = personRepository.findAllInOneDoesNotWorkQuery();
+        return personMapper.map(all);
+    }
+
+    @Transactional
     public PersonDto getSingle(String bid) {
         Optional<Person> byBid = personRepository.findByBid(bid);
         return byBid.map(personMapper::map).orElseThrow(() -> new IllegalArgumentException("Person with bid " + bid + " does not exist"));

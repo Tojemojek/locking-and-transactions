@@ -111,6 +111,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Person after changing fields from List to Set",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/all/people/set",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"all",
+								"people",
+								"set"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

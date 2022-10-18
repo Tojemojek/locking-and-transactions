@@ -43,6 +43,12 @@ public class PersonController {
         log.debug(LogUtil.makeList(all, 0, true));
         return all;
     }
+    @GetMapping(path = "/all/people/set")
+    public List<PersonDto> getAllInSet() {
+        List<PersonDto> all = personService.getAllInSet();
+        log.debug(LogUtil.makeList(all, 0, true));
+        return all;
+    }
 
     @GetMapping(path = "/single/person/{bid}")
     public PersonDto getSingle(@PathVariable("bid") String bid) {
