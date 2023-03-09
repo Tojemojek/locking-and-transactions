@@ -31,7 +31,7 @@ public class AccountController {
         return retryCount.get();
     }
 
-    @GetMapping(path = "/account/add/pesimistic/read")
+    @GetMapping(path = "/account/add/pessimistic/read")
     public Integer addToAccountPessimisticRead(@RequestParam("bid") String bid,
                                                @RequestParam("value") BigDecimal value,
                                                @RequestParam(name = "retry", required = false,
@@ -43,7 +43,7 @@ public class AccountController {
         return retryCount.get();
     }
 
-    @GetMapping(path = "/account/add/pesimistic/write")
+    @GetMapping(path = "/account/add/pessimistic/write")
     public Integer addToAccountPessimisticWrite(@RequestParam("bid") String bid,
                                                 @RequestParam("value") BigDecimal value,
                                                 @RequestParam(name = "retry", required = false,
@@ -55,7 +55,7 @@ public class AccountController {
         return retryCount.get();
     }
 
-    @GetMapping(path = "/account/add/pesimistic/write-force")
+    @GetMapping(path = "/account/add/pessimistic/write-force")
     public Integer addToAccountPessimisticWriteForce(@RequestParam("bid") String bid,
                                                      @RequestParam("value") BigDecimal value,
                                                      @RequestParam(name = "retry", required =

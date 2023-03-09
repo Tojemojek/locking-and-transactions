@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "e67c9c0e-4dc6-4473-a38f-88353574b1e9",
-		"name": "PesimisticLocking",
+		"name": "PessimisticLocking",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "16756059"
 	},
@@ -71,7 +71,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/account/add/pesimistic/read?bid=ACC_0001&value=1&retry=false",
+					"raw": "localhost:8080/account/add/pessimistic/read?bid=ACC_0001&value=1&retry=false",
 					"host": [
 						"localhost"
 					],
@@ -79,7 +79,7 @@
 					"path": [
 						"account",
 						"add",
-						"pesimistic",
+						"pessimistic",
 						"read"
 					],
 					"query": [
@@ -106,7 +106,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/account/add/pesimistic/write?bid=ACC_0001&value=1&retry=false",
+					"raw": "localhost:8080/account/add/pessimistic/write?bid=ACC_0001&value=1&retry=false",
 					"host": [
 						"localhost"
 					],
@@ -114,7 +114,7 @@
 					"path": [
 						"account",
 						"add",
-						"pesimistic",
+						"pessimistic",
 						"write"
 					],
 					"query": [
@@ -141,7 +141,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/account/add/pesimistic/write-force?bid=ACC_0001&value=1&retry=false",
+					"raw": "localhost:8080/account/add/pessimistic/write-force?bid=ACC_0001&value=1&retry=false",
 					"host": [
 						"localhost"
 					],
@@ -149,7 +149,7 @@
 					"path": [
 						"account",
 						"add",
-						"pesimistic",
+						"pessimistic",
 						"write-force"
 					],
 					"query": [

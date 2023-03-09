@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PesimisticApplication {
+public class PessimisticApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PesimisticApplication.class, args);
+        SpringApplication.run(PessimisticApplication.class, args);
     }
 
 }
