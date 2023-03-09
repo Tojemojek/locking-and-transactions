@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "e67c9c0e-4dc6-4473-a38f-88353574b1e9",
+		"name": "PesimisticLocking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16756059"
+	},
+	"item": [
+		{
+			"name": "Get Account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/account/get?bid=ACC_0001",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"get"
+					],
+					"query": [
+						{
+							"key": "bid",
+							"value": "ACC_0001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Optimistic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/account/add/optimistic?bid=ACC_0001&value=1&retry=false",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"add",
+						"optimistic"
+					],
+					"query": [
+						{
+							"key": "bid",
+							"value": "ACC_0001"
+						},
+						{
+							"key": "value",
+							"value": "1"
+						},
+						{
+							"key": "retry",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pessimistic Read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/account/add/pesimistic/read?bid=ACC_0001&value=1&retry=false",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"add",
+						"pesimistic",
+						"read"
+					],
+					"query": [
+						{
+							"key": "bid",
+							"value": "ACC_0001"
+						},
+						{
+							"key": "value",
+							"value": "1"
+						},
+						{
+							"key": "retry",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pessimistic Write",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/account/add/pesimistic/write?bid=ACC_0001&value=1&retry=false",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"add",
+						"pesimistic",
+						"write"
+					],
+					"query": [
+						{
+							"key": "bid",
+							"value": "ACC_0001"
+						},
+						{
+							"key": "value",
+							"value": "1"
+						},
+						{
+							"key": "retry",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pessimistic Force",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/account/add/pesimistic/write-force?bid=ACC_0001&value=1&retry=false",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"add",
+						"pesimistic",
+						"write-force"
+					],
+					"query": [
+						{
+							"key": "bid",
+							"value": "ACC_0001"
+						},
+						{
+							"key": "value",
+							"value": "1"
+						},
+						{
+							"key": "retry",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Value",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/account/set?bid=ACC_0001&value=0&retry=false",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"set"
+					],
+					"query": [
+						{
+							"key": "bid",
+							"value": "ACC_0001"
+						},
+						{
+							"key": "value",
+							"value": "0"
+						},
+						{
+							"key": "retry",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
