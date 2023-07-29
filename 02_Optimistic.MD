@@ -8,7 +8,7 @@ For tests I use hikari.maximum-pool-size= 10 - experiment with this value, resul
 
 ### Lost updates TEST 1:
 
-Comment out @Version in class pl.kostrowski.locking.model.Account
+Comment out @Version in class pl.kostrowski.nplusone.model.Account
 Try to run jMetter from file ./jmetter/addToAccount.jmx
 
 Result:
@@ -35,7 +35,7 @@ same line in 2 threads) so our requests send and in queue and only last result o
 
 ### Lost updates TEST 2:
 
-@Version in class pl.kostrowski.locking.model.Account must be active
+@Version in class pl.kostrowski.nplusone.model.Account must be active
 Try to run jMetter from file ./jmetter/addToAccount.jmx
 
 Result:
