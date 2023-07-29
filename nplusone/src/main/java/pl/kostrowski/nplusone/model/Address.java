@@ -1,4 +1,4 @@
-package pl.kostrowski.locking.model;
+package pl.kostrowski.nplusone.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -8,17 +8,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Version;
-import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
 @Entity
 @Data
-public class Account {
+public class Address {
     @Id
     @GeneratedValue
     private Long id;
     private String bid;
-    private BigDecimal amount;
+    private String city;
+    private String street;
+    private Long streetNo;
 
     @CreatedDate
     private ZonedDateTime createdDate;
