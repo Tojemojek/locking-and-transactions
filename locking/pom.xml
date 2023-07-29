@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pl.kostrowski</groupId>
-    <artifactId>pessimistic</artifactId>
+    <artifactId>locking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>Pessimistic Locking Examples</name>
-    <description>How pessimistic locking works in java</description>
+    <name>Pessimistic And Optimistic Locking Examples</name>
+    <description>How pessimistic and optimistic locking works in java</description>
 
     <properties>
         <java.version>17</java.version>

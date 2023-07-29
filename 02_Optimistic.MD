@@ -8,13 +8,13 @@ For tests I use hikari.maximum-pool-size= 10 - experiment with this value, resul
 
 ### Lost updates TEST 1:
 
-Comment out @Version in class pl.kostrowski.nplusone.model.Account
-Try to run jMetter from file ./jmetter/addToAccount.jmx
+In this test we are using entity without @Version annotation [AccountNoVersion.java](locking%2Fsrc%2Fmain%2Fjava%2Fpl%2Fkostrowski%2Fpessimistic%2Fmodel%2Fnotaudited%2FAccountNoVersion.java)
+Try to run jMetter from file [addToAccountNoRetry_noLock.jmx](locking%2Fjmetter%2FaddToAccountNoRetry_noLock.jmx)
 
 Result:
 
 - 100% Success rate on requests (all 200 OK response code)
-- amount = 10.00 (90% of failures)
+- amount = waaay smaller than we expected (in my case around 10.00)
   OMG WHAT HAVE WE DONE!
 
 BUT WHY?
@@ -23,10 +23,7 @@ BUT WHY?
     update
         account
     set amount=?,
-        bid=?,
-        created_date=?,
-        last_modified=?,
-        version=?
+        bid=?
     where id = ? 
 ```
 
@@ -36,12 +33,12 @@ same line in 2 threads) so our requests send and in queue and only last result o
 ### Lost updates TEST 2:
 
 @Version in class pl.kostrowski.nplusone.model.Account must be active
-Try to run jMetter from file ./jmetter/addToAccount.jmx
+Try to run jMetter from file [addToAccountNoRetry_optimistic.jmx](locking%2Fjmetter%2FaddToAccountNoRetry_optimistic.jmx)./jmetter/addToAccount.jmx
 
 Result:
 
 - 10% Success rate on requests (10 200 OK, others 500 with OptimisticLockingException)
-- amount = 10.00 (BUT 90% of failures - so valid result)
+- amount = would be correct as only successful requests are saved
   NOT THE BEST but at least we ACK only good transactions.
 
 BUT WHY?
@@ -63,12 +60,12 @@ is always locked on update in DB, there is no risk of lost updates.
 
 ### Lost updates TEST 3:
 
-Try to run jMetter from file ./jmetter/addToAccountWithRetry.jmx
+Try to run jMetter from file [addToAccountWithRetry_optimistic.jmx](locking%2Fjmetter%2FaddToAccountWithRetry_optimistic.jmx)
 As Test 2 but method with "retry=true"
 
 - 100% Success rate on requests (100 200 OK)
-- amount = 100.00 (so valid result)
+- amount = 30.00 (so valid result)
   a lot of retries done = but that's how optimistic locking should work
 
-
+But this will create A LOT of noise... and we will have to retry a lot of times.
 
