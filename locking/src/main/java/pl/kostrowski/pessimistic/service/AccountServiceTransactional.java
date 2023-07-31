@@ -20,20 +20,6 @@ public class AccountServiceTransactional {
   private final AccountRepository accountRepository;
   private final AccountNoVersionRepository accountNoVersionRepository;
 
-  public Account addOnceOptimistic(String bid, BigDecimal value) {
-    Optional<Account> byBid = accountRepository.findByBid(bid);
-    if (byBid.isPresent()) {
-      byBid.get()
-           .setAmount(byBid.get()
-                           .getAmount()
-                           .add(value));
-      SleepUtil.sleepFor(SLEEP_TIME_MS);
-      return accountRepository.save(byBid.get());
-    } else {
-      throw new IllegalArgumentException("Bid " + bid + " does not exist");
-    }
-  }
-
   public AccountNoVersion addOnceNoLock(String bid, BigDecimal value) {
     Optional<AccountNoVersion> byBid = accountNoVersionRepository.findByBid(bid);
     if (byBid.isPresent()) {
@@ -43,6 +29,20 @@ public class AccountServiceTransactional {
                            .add(value));
       SleepUtil.sleepFor(SLEEP_TIME_MS);
       return accountNoVersionRepository.save(byBid.get());
+    } else {
+      throw new IllegalArgumentException("Bid " + bid + " does not exist");
+    }
+  }
+
+  public Account addOnceOptimistic(String bid, BigDecimal value) {
+    Optional<Account> byBid = accountRepository.findByBid(bid);
+    if (byBid.isPresent()) {
+      byBid.get()
+              .setAmount(byBid.get()
+                      .getAmount()
+                      .add(value));
+      SleepUtil.sleepFor(SLEEP_TIME_MS);
+      return accountRepository.save(byBid.get());
     } else {
       throw new IllegalArgumentException("Bid " + bid + " does not exist");
     }

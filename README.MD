@@ -15,10 +15,9 @@ OR
 
 ### Add data
 Use files to create schema and fill it with data
-- [Create Tables](pessimistic%2Fdata%2F01_create.sql)
-- [Add test data](pessimistic%2Fdata%2F02_data.sql)
-- [Set Logging Levels](pessimistic%2Fdata%2F03_set_logging.sql)
-
+- [Create Tables](locking%2Fdata%2F01_create.sql)
+- [Add test data](locking%2Fdata%2F02_data.sql)
+- [Set Logging Levels](locking%2Fdata%2F03_set_logging.sql)
 
 After last step you should restart database, to apply changes.
 

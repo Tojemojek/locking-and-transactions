@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "2be0870a-fef7-43be-873c-271d6cdc2824",
-		"name": "OptimisticLocking Copy",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16756059"
+		"_postman_id": "970ce37a-e1b6-4932-96f3-ddc4ed38e683",
+		"name": "OptimisticLocking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{

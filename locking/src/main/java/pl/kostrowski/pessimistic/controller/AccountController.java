@@ -21,7 +21,7 @@ public class AccountController {
 
     @GetMapping(path = "/account/add/nolock")
     public AccountNoVersion addToAccountNoLock(@RequestParam("bid") String bid,
-                                                  @RequestParam("value") BigDecimal value) {
+                                               @RequestParam("value") BigDecimal value) {
         AtomicInteger retryCount = new AtomicInteger(0);
         AccountNoVersion accountNoVersion = accountService.addToNoLockAccount(bid, value);
         log.debug("Adding to account with bid {}, value {}", bid, value);
